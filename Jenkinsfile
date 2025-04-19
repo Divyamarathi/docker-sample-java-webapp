@@ -36,7 +36,7 @@ pipeline {
 	    stage('Run Docker Container') {
                steps {
                   script {
-                    sh "docker run -d -p 9000:8080 ${DOCKER_IMAGE}:V${env.BUILD_NUMBER}"
+                    sh "docker run -d -p 8081:8080 ${DOCKER_IMAGE}:V${env.BUILD_NUMBER}"
                   }
                }
 	    }
