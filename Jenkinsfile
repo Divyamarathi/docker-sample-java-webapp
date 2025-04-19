@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
 	    DOCKER_IMAGE = 'divyamarathi2025/demojava'
-	    DOCKER_CREDENTIAL_ID= 'dockerhub_login'
+	    DOCKER_CREDENTIAL_ID= 'Dockerhub_login'
     }	
     stages {
             stage('checkout-stage') {
