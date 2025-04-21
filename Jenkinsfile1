@@ -1,5 +1,7 @@
 pipeline {
- agent any
+ agent {
+        label 'build'
+    }
  environment {
  AWS_ACCOUNT_ID="825765401018"
  AWS_DEFAULT_REGION="ap-southeast-1" 
