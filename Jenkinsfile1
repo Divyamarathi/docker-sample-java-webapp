@@ -36,7 +36,7 @@ pipeline {
 	    stage('Build Docker Image') {
                 steps {
                    script {
-                       dockerImage = docker.build("${DOCKER_IMAGE}:V${env.BUILD_NUMBER}")
+                       dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                    }
                 }
             }
@@ -55,7 +55,7 @@ pipeline {
                steps {
                   script {
                     //sh "docker rm ${DOCKER_IMAGE}:V${env.BUILD_NUMBER}"
-                    sh "docker run -d -p 8085:8080 ${DOCKER_IMAGE}:V${env.BUILD_NUMBER}"
+                    sh "docker run -d -p 8085:8080 ${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                   }
                }
 	    }
