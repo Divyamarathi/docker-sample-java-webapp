@@ -25,6 +25,7 @@ pipeline {
                     sh "mvn clean verify sonar:sonar"
                 }
             }
+        }
         stage('Push to ECR') {
             steps {
                 script {
