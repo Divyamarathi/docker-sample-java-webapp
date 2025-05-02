@@ -19,6 +19,12 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis Stage') {
+            steps{
+                withSonarQubeEnv('sonarqube-server') { 
+                    sh "mvn clean verify sonar:sonar"
+                }
+            }
         stage('Push to ECR') {
             steps {
                 script {
