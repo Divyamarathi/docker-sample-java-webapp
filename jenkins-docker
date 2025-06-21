@@ -1,0 +1,29 @@
+pipeline { 
+    agent { label 'docker' } 
+    stages { 
+        stage('Checkout') { 
+            steps { 
+                git url: "https://github.com/Divyamarathi/docker-sample-java-webapp.git" 
+            } 
+        } 
+ 
+        stage('Build Docker Image') { 
+            steps { 
+                script { 
+                    sh 'docker build -t java:1 .' 
+                } 
+            } 
+        } 
+ 
+        stage('Deploy to Docker Host') { 
+            steps { 
+                script { 
+                    sh ''' 
+                        docker volume create volume 
+                        docker run -d -p 8090:8080 -v volume:/app --name java java:1 
+                    ''' 
+                } 
+            } 
+} 
+} 
+}
